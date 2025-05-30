@@ -1,8 +1,10 @@
+$accent-color: rgb(92, 178, 97);
+$disabled-color:rgb(100, 100, 100);
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  width: 100%;
 
   color-scheme: light dark;
   // color: rgba(255, 255, 255, 0.87);
@@ -32,19 +34,39 @@ body {
   background-color: wheat;
 }
 
-#root {
+#root{
+  // width: 100%;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+section {
   background-color: white;
   border-radius: 20px;
   width:100%;
+  max-width: 1280px;
   min-height: 50vh;
   padding: 1.5rem;
-  margin: 2rem;
+  box-shadow:5px 14px 29px -10px rgba(0,0,0,0.75);
 }
 
 h1 {
   font-size: 1.7em;
   line-height: 1.1;
   margin-bottom: 1em;
+}
+
+.addButton{
+  padding-inline: 0.6em;
+  padding-block: 0.3em;
+  background-color: $accent-color;
+  border-radius: 10px;
+  color:#fff;
+  font-weight: 500;
+  transition: background-color ease 0.5s;
+  &:hover{
+    background-color: rgb(90, 146, 93);
+  }
 }
 
 // button {
@@ -82,3 +104,9 @@ h1 {
 //     background-color: #f9f9f9;
 //   }
 // }
+
+@media (max-width:735px ) {
+  :root {
+    font-size:12px;
+  }
+}

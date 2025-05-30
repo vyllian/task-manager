@@ -6,10 +6,11 @@ import App from './App.jsx'
 import { configureStore } from '@reduxjs/toolkit'
 import taskReducer from './taskSlice'
 
+
 const store = configureStore({
   reducer:{
     tasks : taskReducer,
-  }
+  },
 })
 
 createRoot(document.getElementById('root')).render(
