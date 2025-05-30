@@ -1,0 +1,9 @@
+{
+  "users": [
+    { "id": 1, "email": "user@example.com", "password": "pass123" }
+  ],
+  "tasks": [
+    { "id": "1", "title": "a title", "description": "hahahah", "completed":false },
+    { "id": "2", "title": "another title", "description": "hahavdvdvdhah", "completed":true }
+  ]
+}
