@@ -14,7 +14,7 @@ section.new {
         font-weight: 500;
         margin-bottom: 0.3em;
     }
-    input, textarea{
+    input, textarea, select{
         border-radius: 10px;
         border: 1px solid main.$disabled-color;
         width:100%;

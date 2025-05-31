@@ -2,29 +2,22 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTasks, updateStatus, deleteTask } from "../taskSlice";
 import "../styles/TaskList.scss";
-import { useSearchParams, useNavigate, Link } from "react-router-dom";
+import {
+  useSearchParams,
+  useNavigate,
+  Link,
+  useLocation,
+} from "react-router-dom";
 import binIcon from "../assets/icons8-bin.svg";
 
 const TaskList = () => {
   const dispatch = useDispatch();
+
   const data = useSelector((state) => state.tasks);
-  useEffect(() => {
-    dispatch(fetchTasks());
-  }, []);
   const [searchParams] = useSearchParams();
+
   const navigate = useNavigate();
-
   const completedParam = searchParams.get("completed");
-
-  useEffect(() => {
-    if (completedParam === "true") {
-      setActiveTab("completed-tasks");
-    } else if (completedParam === "false") {
-      setActiveTab("active-tasks");
-    } else {
-      setActiveTab("all-tasks");
-    }
-  }, [completedParam]);
 
   const setActiveTab = (id) => {
     const filters = document.getElementsByClassName("filter");
@@ -36,6 +29,27 @@ const TaskList = () => {
       }
     });
   };
+
+  const chooseTab = () => {
+    if (completedParam === null) {
+      setActiveTab("all-tasks");
+    } else if (completedParam === "true") {
+      setActiveTab("completed-tasks");
+    } else {
+      setActiveTab("active-tasks");
+    }
+  };
+
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!data.isLoading) {
+      chooseTab();
+    }
+  }, [data.isLoading, completedParam]);
+
 
   let filteredTasks = [...data.data];
   if (completedParam === "true") {
@@ -64,14 +78,14 @@ const TaskList = () => {
     dispatch(updateStatus({ id: task.id, completed: !task.completed }));
   };
 
-  const handleDeleteTask = async(id)=>{
+  const handleDeleteTask = async (id) => {
     alert("Завдання видалено");
     dispatch(deleteTask(id));
-  }
+  };
+  if (data.isLoading) return <h1>Завантаження...</h1>;
 
   return (
     <section className="list">
-      {data.isLoading && <h1>Loading</h1>}
       <h1>Мої завдання</h1>
       <nav>
         <div>
@@ -110,7 +124,10 @@ const TaskList = () => {
         </tr>
         {filteredTasks.length > 0 ? (
           filteredTasks.map((task) => (
-            <tr className={`task ${task.completed ? 'completed':''}`} key={task.id}>
+            <tr
+              className={`task ${task.completed ? "completed" : ""}`}
+              key={task.id}
+            >
               <td className="task-check">
                 <input
                   type="checkbox"
@@ -123,14 +140,21 @@ const TaskList = () => {
               </td>
               <td className="task-description">{task.description}</td>
               <td className="task-delete">
-                <button type="button" onClick={()=>{handleDeleteTask(task.id)}}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleDeleteTask(task.id);
+                  }}
+                >
                   <img src={binIcon} alt="delete" />
                 </button>
               </td>
             </tr>
           ))
         ) : (
-          <p>Немає завдань</p>
+          <tr className="no-tasks">
+            <td>Немає завдань</td>
+          </tr>
         )}
       </table>
     </section>

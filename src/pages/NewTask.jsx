@@ -20,7 +20,8 @@ const NewTask = () => {
   };
   return (
     <section className="new">
-      <h1>Нове завдання</h1>
+        <a href="/" className="goBack">Назад</a>
+        <h1>Нове завдання</h1>
       <form className="form" onSubmit={createTask}>
         <label htmlFor="title">Назва</label>
         <input
