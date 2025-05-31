@@ -1,9 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+import FAKE_TOKEN from "../mock-jwt";
 const API = "http://localhost:3000/tasks";
+
 
 export const fetchTasks = createAsyncThunk("fetchTasks", async () => {
   const response = await fetch(API);
+  return response.json();
+});
+
+export const fetchTask = createAsyncThunk("fetchTask", async (id) => {
+  const response = await fetch(API+`/${id}`,{
+    Authorization: `Bearer ${FAKE_TOKEN}` 
+  });
   return response.json();
 });
 
@@ -21,7 +30,7 @@ export const addTask = createAsyncThunk("addTask", async (task) => {
   });
 });
 
-export const updateTask = createAsyncThunk("updateTask", async (id, task) => {
+export const updateTask = createAsyncThunk("updateTask", async ({id, task}) => {
   const response = await fetch(API + `/${id}`, {
     method: "PUT",
     headers: {
@@ -29,6 +38,8 @@ export const updateTask = createAsyncThunk("updateTask", async (id, task) => {
     },
     body: JSON.stringify(task),
   });
+  const updatedTask = await response.json(); 
+  return updatedTask;
 });
 
 export const updateStatus = createAsyncThunk(
@@ -63,6 +74,10 @@ const taskSlice = createSlice({
   name: "tasks",
   initialState,
   extraReducers: (builder) => {
+    builder.addCase(fetchTask.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.data = action.payload;
+    });
     builder.addCase(fetchTasks.pending, (state, action) => {
       state.isLoading = true;
     });
@@ -74,6 +89,13 @@ const taskSlice = createSlice({
       state.error = true;
     });
     builder.addCase(updateStatus.fulfilled, (state, action) => {
+      const updatedTask = action.payload;
+      const index = state.data.findIndex((task) => task.id === updatedTask.id);
+      if (index !== -1) {
+        state.data[index] = updatedTask;
+      }
+    });
+    builder.addCase(updateTask.fulfilled, (state, action) => {
       const updatedTask = action.payload;
       const index = state.data.findIndex((task) => task.id === updatedTask.id);
       if (index !== -1) {

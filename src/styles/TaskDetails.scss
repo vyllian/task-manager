@@ -1,0 +1,53 @@
+@use '../styles/main.scss' as main;
+
+#root{
+    width:100%;
+}
+
+.header{
+    @include main.flex(row, space-between, center);
+    position: relative;
+    margin-bottom: 2em;
+
+    h1{
+        margin: 0;
+    }
+
+    button{
+        border-radius: 50%;
+        transition: background-color 0.5s ease;
+        &:hover{
+            background-color: rgba(180, 178, 178, 0.599);
+        }
+    }
+    img{
+        width: 2em;
+        height: 2em;
+    }
+    &-options{
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(-35%);
+        border-radius: 10px;
+        border: 1px solid rgba(180, 178, 178, 0.599);
+
+        li{
+            cursor: pointer;
+            padding: 0.2em 0.5em;
+            transition: background-color 0.5s;
+            
+            &:first-child{
+                border-bottom: 1px solid rgba(180, 178, 178, 0.599);
+                border-radius: 10px 10px 0 0;
+            }
+            &:last-child{
+                border-radius: 0 0 10px 10px;
+                color: rgba(171, 27, 27, 0.993);
+            }
+            &:hover{
+                background-color: rgba(180, 178, 178, 0.414)
+            }
+        }
+    }
+}

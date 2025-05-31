@@ -6,9 +6,6 @@ $disabled-color:rgb(100, 100, 100);
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  // color: rgba(255, 255, 255, 0.87);
-  // background-color: #242424;
   color: #213547;
 
   font-synthesis: none;
@@ -31,7 +28,7 @@ body {
   min-width: 320px;
   width: 100%;
   min-height: 100vh;
-  background-color: wheat;
+  background-color: rgb(245, 214, 243);
 }
 
 #root{
@@ -48,6 +45,7 @@ section {
   min-height: 50vh;
   padding: 1.5rem;
   box-shadow:5px 14px 29px -10px rgba(0,0,0,0.75);
+  margin: 0 auto;
 }
 
 h1 {
@@ -69,43 +67,50 @@ h1 {
   }
 }
 
-// button {
-//   border-radius: 8px;
-//   border: 1px solid transparent;
-//   padding: 0.6em 1.2em;
-//   font-size: 1em;
-//   font-weight: 500;
-//   font-family: inherit;
-//   background-color: #1a1a1a;
-//   cursor: pointer;
-//   transition: border-color 0.25s;
+.goBack{
+  display: block;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.8rem;
+  margin-bottom: 1em;
+  &:hover{
+    text-decoration: underline;
+  }
+}
 
-//   &:hover {
-//     border-color: #646cff;
-//   }
 
-//   &:focus,
-//   &:focus-visible {
-//     outline: 4px auto -webkit-focus-ring-color;
-//   }
-// }
-
-// @media (prefers-color-scheme: light) {
-//   :root {
-//     color: #213547;
-//     background-color: #ffffff;
-//   }
-
-//   a:hover {
-//     color: #747bff;
-//   }
-
-//   button {
-//     background-color: #f9f9f9;
-//   }
-// }
-
-@media (max-width:735px ) {
+@media (max-width: 735px){
+  tr.task {
+    &:first-child{
+      display: none;
+    }
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    margin-bottom: 1em;
+  }
+  .task{  
+    &-check,
+    &-delete {
+      align-self: flex-end;
+    }
+    
+    &-title {
+      margin-bottom: 0.5em;
+    }
+    
+    &-description {
+      text-align: center;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: unset;
+      margin-bottom: 0.5em;
+    }
+  }
+}
+@media (max-width:885px ) {
   :root {
     font-size:12px;
   }

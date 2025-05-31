@@ -8,16 +8,40 @@
   ],
   "tasks": [
     {
-      "id": "1",
-      "title": "a title",
-      "description": "hahahah",
-      "completed": false
+      "title": "написати диплом",
+      "description": "дуже тяжко, часу нема, добре що є джпт",
+      "completed": false,
+      "id": "1"
     },
     {
-      "id": "6",
-      "title": "дуже важливе завдання!!!",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt, cum ea quo tenetur nostrum molestiae quae nam sit quaerat voluptas consequuntur repellendus perferendis delectus enim veniam reiciendis omnis. Ex.\nVeritatis recusandae molestias minima sequi fuga saepe corporis temporibus eius consectetur. Excepturi cum doloribus nam sed nihil at sunt earum iusto! Recusandae eos quos nam laboriosam minima rem veniam culpa?\nRem accusantium cum iure dolorem quas magnam vitae corporis officia. Enim sunt ab ipsam reprehenderit, quia ad. Animi sunt dolorum itaque exercitationem illum rerum dolor, fugiat doloremque? Numquam, eaque quas!\nImpedit maxime et reprehenderit officiis ducimus quibusdam voluptates, error maiores enim repellendus suscipit, officia, ad facilis id quos ab tempora unde quasi. Ab nisi quia ut, quod molestiae voluptate dolore.\nVoluptates, eos esse quis tempora sunt odio reprehenderit dolor iusto dolorum ut consequuntur temporibus incidunt necessitatibus dolore eligendi illo rem unde! Quis doloribus enim debitis! Corrupti mollitia officiis numquam totam!\nIpsam sequi at, earum recusandae ab veniam pariatur consequuntur sunt eum esse ex, saepe quidem fugiat autem tempore. Illum iste tempora quas neque nihil nulla labore praesentium esse. Impedit, quia.\nOdit in porro fuga assumenda veritatis amet aperiam aspernatur recusandae, sed rem deleniti earum sit cumque nostrum dignissimos beatae? Placeat sit sapiente sequi harum rerum amet quis temporibus recusandae obcaecati!\nConsectetur sunt illo quibusdam omnis, id voluptatibus similique quasi minima molestiae? Eligendi hic nobis accusantium dolore illum cupiditate alias soluta non tempora odit quaerat, voluptatibus, natus repudiandae tenetur consequatur vero?\nConsequatur corrupti maiores libero voluptatibus animi nisi magnam sunt voluptates alias a quisquam accusantium ratione nihil facilis optio assumenda modi laborum saepe, illum autem at, incidunt adipisci? Praesentium, quos ut!\nPariatur molestiae quibusdam harum non quis aliquam id dicta quam dolorum labore repellendus inventore, ad magnam nesciunt et voluptate at consequuntur, nihil, deserunt doloribus atque blanditiis eos odio? Praesentium, iure?",
-      "completed": false
+      "title": "сходити в нову кафешку",
+      "description": "ще одна інстравграм кафешка в центрі Львова, треба піти",
+      "completed": true,
+      "id": "2"
+    },
+    {
+      "title": "відправити посилку",
+      "description": "м.Рівне, відділення 54, 0990099004",
+      "completed": false,
+      "id": "3"
+    },
+    {
+      "title": "пограти в сімси",
+      "description": "треба скачати...",
+      "completed": false,
+      "id": "4"
+    },
+    {
+      "title": "сходити на ліло і стіч",
+      "description": "дуже тяжко, часу нема",
+      "completed": false,
+      "id": "5"
+    },
+    {
+      "title": "написати диплом",
+      "description": "ще раз, щоб тосно написати",
+      "completed": false,
+      "id": "6"
     }
   ]
 }
