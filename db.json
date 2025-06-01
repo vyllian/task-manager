@@ -3,45 +3,22 @@
     {
       "id": "1",
       "email": "user@example.com",
-      "password": "pass123"
+      "password": "$2a$12$mY.6o1trnoxyw3pjyxa3AOdWlp7G2BNLPv2jZ2LNHk8MqT8u06un6"
     }
   ],
   "tasks": [
     {
-      "title": "написати диплом",
-      "description": "дуже тяжко, часу нема, добре що є джпт",
+      "title": "приготувати рис",
+      "description": "купити овочі до нього",
+      "userId": "1",
       "completed": false,
-      "id": "1"
+      "id": 2
     },
     {
-      "title": "сходити в нову кафешку",
-      "description": "ще одна інстравграм кафешка в центрі Львова, треба піти",
+      "title": "Відсвяткувати дн",
+      "description": "поїхати за Львів",
       "completed": true,
-      "id": "2"
-    },
-    {
-      "title": "відправити посилку",
-      "description": "м.Рівне, відділення 54, 0990099004",
-      "completed": false,
-      "id": "3"
-    },
-    {
-      "title": "пограти в сімси",
-      "description": "треба скачати...",
-      "completed": false,
-      "id": "4"
-    },
-    {
-      "title": "сходити на ліло і стіч",
-      "description": "дуже тяжко, часу нема",
-      "completed": false,
-      "id": "5"
-    },
-    {
-      "title": "написати диплом",
-      "description": "ще раз, щоб тосно написати",
-      "completed": false,
-      "id": "6"
+      "id": 3
     }
   ]
 }

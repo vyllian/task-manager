@@ -1,43 +1,75 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-import FAKE_TOKEN from "../mock-jwt";
-const API = "http://localhost:3000/tasks";
+const API = "http://localhost:8000/tasks";
+
 
 
 export const fetchTasks = createAsyncThunk("fetchTasks", async () => {
-  const response = await fetch(API);
+  const token = localStorage.getItem("accessToken");
+
+  const response = await fetch(API, {
+    method:'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  });
+  if (response.status === 401 || response.status === 403) {
+    throw new Error('не авторизовано');
+  }
   return response.json();
 });
 
 export const fetchTask = createAsyncThunk("fetchTask", async (id) => {
+  const token = localStorage.getItem('accessToken');
+  
   const response = await fetch(API+`/${id}`,{
-    Authorization: `Bearer ${FAKE_TOKEN}` 
+    method:'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    }, 
   });
+  if (response.status === 401 || response.status === 403) {
+    throw new Error('не авторизовано');
+  }
   return response.json();
 });
 
 export const addTask = createAsyncThunk("addTask", async (task) => {
+  const token = localStorage.getItem('accessToken');
+  const userString = localStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;
+
   const response = await fetch(API, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`,
     },
     body: JSON.stringify({
       title: task.title,
       description: task.description,
+      userId: user.id,
       completed: false,
     }),
   });
+  if (response.status === 401 || response.status === 403) {
+    throw new Error('не авторизовано');
+  }
 });
 
 export const updateTask = createAsyncThunk("updateTask", async ({id, task}) => {
-  const response = await fetch(API + `/${id}`, {
+  const token = localStorage.getItem('accessToken');
+    const response = await fetch(API + `/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`,
     },
     body: JSON.stringify(task),
   });
+  if (response.status === 401 || response.status === 403) {
+    throw new Error('не авторизовано');
+  }
   const updatedTask = await response.json(); 
   return updatedTask;
 });
@@ -45,22 +77,32 @@ export const updateTask = createAsyncThunk("updateTask", async ({id, task}) => {
 export const updateStatus = createAsyncThunk(
   "updateStatus",
   async ({ id, completed }) => {
+    const token = localStorage.getItem('accessToken');
     const response = await fetch(API + `/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify({ completed }),
     });
+    if (response.status === 401 || response.status === 403) {
+      throw new Error('не авторизовано');
+    }
     const updatedTask = await response.json(); 
     return updatedTask;
   }
 );
 
 export const deleteTask = createAsyncThunk("deleteTask", async (id) => {
+  const token = localStorage.getItem('accessToken');
   const response = await fetch(API + `/${id}`, {
     method: "DELETE",
+    'Authorization': `Bearer ${token}`,
   });
+  if (response.status === 401 || response.status === 403) {
+    throw new Error('не авторизовано');
+  }
     return id;
 });
 

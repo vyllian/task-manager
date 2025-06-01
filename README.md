@@ -1,12 +1,48 @@
-# React + Vite
+# Project Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a single-page Task Manager application that:
 
-Currently, two official plugins are available:
+- Implements JWT-based authentication via **json-server-auth**.  
+- Ensures each user sees only their own tasks.  
+- Provides full CRUD (Create, Read, Update, Delete) functionality for tasks.  
+- Uses React (functional components and hooks) with Redux Toolkit for state management.  
+- Utilizes React Router for routing.  
+- Employs Vite and Yarn for fast development and build processes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+# Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**  
+  - React 18  
+  - Redux Toolkit  
+  - React Router v6  
+  - JavaScript (ES6+)  
+  - Vite  
+  - Yarn 
+
+- **Backend (Mock)**  
+  - json-server  
+  - json-server-auth (JWT)   
+
+---
+
+# Installation
+
+## 1. Clone the Repository
+```sh
+   git clone https://github.com/vyllian/task-manager.git
+```
+## 2. Install dependencies
+```sh
+    cd task-mager
+   yarn install
+```
+## 3. Run json-server
+```sh
+    yarn start
+```
+## 4. Run the project
+```sh
+    yarn dev
+```

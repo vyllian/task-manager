@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/NewTask.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addTask } from "../taskSlice";
@@ -7,11 +7,12 @@ const NewTask = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-
+ 
   const createTask = async (e) => {
-    if (!title || !desc) {
+    if (!title) {
       alert("Завдання порожнє!");
     } else {
+
       e.preventDefault();
       dispatch(addTask({ title: title, description: desc }));
       setTitle("");
